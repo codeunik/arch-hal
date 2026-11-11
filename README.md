@@ -3,8 +3,9 @@ sudo pacman -Syu zram-generator
 
 sudo tee /etc/systemd/zram-generator.conf >/dev/null <<'EOF'
 [zram0]
-zram-size = ram * 2.5
+zram-size = 2 * ram
 compression-algorithm = zstd
+swap-priority=100
 EOF
 
 sudo tee /etc/sysctl.d/99-swappiness.conf >/dev/null <<'EOF'
